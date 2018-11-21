@@ -1,14 +1,13 @@
-//
-// Created by Omgeee4 on 2018.11.21..
-//
+#ifndef INSTRUMENTS_STRINGEDINSTRUMENT_H
+#define INSTRUMENTS_STRINGEDINSTRUMENT_H
+#include "Instrument.h"
 
-#ifndef INSTRUMENTS_TO_STRINGED_INSTRUMENTS_STRINGEDINSTRUMENT_H
-#define INSTRUMENTS_TO_STRINGED_INSTRUMENTS_STRINGEDINSTRUMENT_H
-
-
-class stringedinstrument {
-
+class StringedInstrument : public Instrument {
+public:
+    virtual std::string sound()=0;
+protected:
+    int _numberOfStrings{};
 };
 
 
-#endif //INSTRUMENTS_TO_STRINGED_INSTRUMENTS_STRINGEDINSTRUMENT_H
+#endif //INSTRUMENTS_STRINGEDINSTRUMENT_H

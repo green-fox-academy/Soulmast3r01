@@ -1,5 +1,9 @@
 #include <iostream>
-
+#include "instrument.h"
+#include "stringedinstrument.h"
+#include "electricguitar.h"
+#include "bassguitar.h"
+#include "violin.h"
 int main( int argc, char* args[] )
 {
 
