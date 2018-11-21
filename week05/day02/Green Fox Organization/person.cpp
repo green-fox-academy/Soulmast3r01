@@ -1,10 +1,10 @@
 #include "person.h"
 
 void Person::introduce ()const{
-    std::cout << "Hi, I'm " << _name << " , a" << _age << " year old" << gendertostring() <<std::endl;
+    std::cout << " Hi, I'm " << _name << " , a " << _age << " year old" << gendertostring() <<std::endl;
 }
 void Person::getGoal()const{
-    std::cout << "My goal is: Live for the momen!" <<std::endl;
+    std::cout << " My goal is: Live for the momen! " <<std::endl;
 }
 Person::Person() {
     _name = "Jane Doe";

@@ -2,11 +2,12 @@
 #include <iostream>
 #include <string>
 void Mentor::introduce() const {
-    std::cout << "Hi, I'm" << _name << " a " << _age << " year old " << gendertostring() << leveltostring() << "mentor" << std::endl;
+    std::cout << " Hi, I'm " << _name << " a " << _age << " year old " << gendertostring() << leveltostring() << " mentor "
+    << std::endl;
 }
 
 void Mentor::getGoal() const {
-    std::cout << "My goal is: Educate brilliant junior software developers." <<std::endl;
+    std::cout << " My goal is: Educate brilliant junior software developers. " <<std::endl;
 }
 Mentor::Mentor(): Person("Jande Doe", 30, Gender::FEMALE){
     _level = Level::INTERMEDIATE;

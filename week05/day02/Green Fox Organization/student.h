@@ -6,7 +6,7 @@ class Student : public Person
 {
 public:
     Student();
-    Student(std::string name, int age, Gender gender,std::string previousOrganization, int skippedDays);
+    Student(std::string name, int age, Gender gender,std::string previousOrganization);
 
     void skipDays(int numberOfDays);
     const std::string &get_previousOrganization() const;

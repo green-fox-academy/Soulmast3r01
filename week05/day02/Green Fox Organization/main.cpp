@@ -3,6 +3,8 @@
 #include "person.h"
 #include "student.h"
 #include "mentor.h"
+#include "sponsor.h"
+#include "cohort.h"
 int main()
 {
     std::vector<Person*> people;

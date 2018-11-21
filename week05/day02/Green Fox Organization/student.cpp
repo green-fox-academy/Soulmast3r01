@@ -5,9 +5,9 @@ Student::Student() : Person("Jande Doe", 30, Gender::FEMALE) {
     _previousOrganization = "The School of Life";
 }
 
-Student::Student(std::string name, int age, Gender gender,std::string previousOrganization, int skippedDays): Person(name, age, gender){
+Student::Student(std::string name, int age, Gender gender,std::string previousOrganization): Person(name, age, gender){
     _previousOrganization = previousOrganization;
-    _skippedDays = skippedDays;
+    _skippedDays =0;
 }
 const std::string &Student::get_previousOrganization() const {
     return _previousOrganization;
@@ -21,10 +21,10 @@ void Student::skipDays(int numberOfDays){
 }
 
 void Student::introduce() const {
-    std::cout << "Hi, I'm " << _name << " a " << _age << " years old " << gendertostring() << " from " << _previousOrganization
-              << "who skipped " << _skippedDays << "days from the course already." <<std::endl;
+    std::cout << " Hi, I'm " << _name << " a " << _age << " years old " << gendertostring() << " from " << _previousOrganization
+              << " who skipped " << _skippedDays << " days from the course already. " <<std::endl;
 }
 
 void Student::getGoal() const {
-    std::cout << "My goal is: Be a junior software developer." <<std::endl;
+    std::cout << " My goal is: Be a junior software developer. "<<std::endl;
 }
