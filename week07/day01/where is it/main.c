@@ -8,10 +8,10 @@ int main() {
     char f;
 
     printf("Enter a string\n");
-    scanf("%s", d);
+    gets(d);
 
-    printf("Enter a string\n");
-    scanf("%c", &f);
+    printf("Enter a character\n");
+    f = (char)getchar();
 
     return checking(d,f);
 }
