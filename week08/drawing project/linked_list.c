@@ -44,7 +44,7 @@ void draw_linked_list(node_t *head, SDL_Renderer* gRenderer)
     int counter = 0;
     int size_width = 100;
     int size_height = 50;
-    int elem_distance =size_width + 50 / 2;
+    int elem_distance = size_width + 50 / 2;
     while (current != NULL) {
         int x =  10 + counter * elem_distance;
         int y =  SCREEN_HEIGHT_LINKED_LIST / 2 - size_height / 2;
@@ -65,6 +65,6 @@ void draw_linked_list(node_t *head, SDL_Renderer* gRenderer)
         SCREEN_HEIGHT_LINKED_LIST / 2);
 
         current = current->next;
-        counter ++;
+        counter++;
     }
 }
