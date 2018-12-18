@@ -5,13 +5,18 @@ static void SystemClock_Config(void);
 static void Error_Handler(void);
 static void MPU_Config(void);
 static void CPU_CACHE_Enable(void);
-
+void Led_Lightning( GPIO_TypeDef * gpio_letter, uint16_t pin_number);
 GPIO_InitTypeDef led1;
 GPIO_InitTypeDef led2;
 GPIO_InitTypeDef led3;
 GPIO_InitTypeDef led4;
 GPIO_InitTypeDef led5;
 GPIO_InitTypeDef led6;
+GPIO_InitTypeDef led7;
+GPIO_InitTypeDef led8;
+GPIO_InitTypeDef led9;
+GPIO_InitTypeDef led10;
+GPIO_InitTypeDef led11;
 int main(void) {
 
 	/* Configure the MPU attributes as Write Through */
@@ -71,23 +76,79 @@ int main(void) {
 	led6.Mode = GPIO_MODE_OUTPUT_PP;
 	led6.Pull = GPIO_PULLDOWN;
 	led6.Speed = GPIO_SPEED_HIGH;
-	HAL_GPIO_Init(GPIOF, &led5);
+	HAL_GPIO_Init(GPIOF, &led6);
 
-	int counter = 0;
+	__HAL_RCC_GPIOC_CLK_ENABLE()
+	;
+	led7.Pin = GPIO_PIN_7;
+	led7.Mode = GPIO_MODE_OUTPUT_PP;
+	led7.Pull = GPIO_PULLDOWN;
+	led7.Speed = GPIO_SPEED_HIGH;
+	HAL_GPIO_Init(GPIOC, &led7);
+
+	__HAL_RCC_GPIOC_CLK_ENABLE()
+	;
+	led8.Pin = GPIO_PIN_6;
+	led8.Mode = GPIO_MODE_OUTPUT_PP;
+	led8.Pull = GPIO_PULLDOWN;
+	led8.Speed = GPIO_SPEED_HIGH;
+	HAL_GPIO_Init(GPIOC, &led8);
+
+	__HAL_RCC_GPIOG_CLK_ENABLE()
+	;
+	led9.Pin = GPIO_PIN_6;
+	led9.Mode = GPIO_MODE_OUTPUT_PP;
+	led9.Pull = GPIO_PULLDOWN;
+	led9.Speed = GPIO_SPEED_HIGH;
+	HAL_GPIO_Init(GPIOG, &led9);
+
+	__HAL_RCC_GPIOB_CLK_ENABLE()
+	;
+	led10.Pin = GPIO_PIN_4;
+	led10.Mode = GPIO_MODE_OUTPUT_PP;
+	led10.Pull = GPIO_PULLDOWN;
+	led10.Speed = GPIO_SPEED_HIGH;
+	HAL_GPIO_Init(GPIOB, &led10);
+
+	__HAL_RCC_GPIOG_CLK_ENABLE()
+	;
+	led11.Pin = GPIO_PIN_7;
+	led11.Mode = GPIO_MODE_OUTPUT_PP;
+	led11.Pull = GPIO_PULLDOWN;
+	led11.Speed = GPIO_SPEED_HIGH;
+	HAL_GPIO_Init(GPIOG, &led11);
+
+	BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
+
 	while (1) {
-		if (counter % 2 == 0) {
-			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
-			HAL_Delay(60);
 
-		} else {
-			HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_10);
-			HAL_Delay(200);
 
+
+	if(BSP_PB_GetState(BUTTON_KEY)){
+			HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
+	}else{
+			Led_Lightning(GPIOA,GPIO_PIN_0);
+			Led_Lightning(GPIOF, GPIO_PIN_10);
+			Led_Lightning(GPIOF, GPIO_PIN_9);
+			Led_Lightning(GPIOF, GPIO_PIN_8);
+			Led_Lightning(GPIOF, GPIO_PIN_7);
+			Led_Lightning(GPIOF, GPIO_PIN_6);
+			Led_Lightning(GPIOC,GPIO_PIN_7);
+			Led_Lightning(GPIOC, GPIO_PIN_6);
+			Led_Lightning(GPIOG, GPIO_PIN_6);
+			Led_Lightning(GPIOB, GPIO_PIN_4);
+			Led_Lightning(GPIOG, GPIO_PIN_7);
 		}
-		counter++;
-	}
 }
-
+}
 
 static void SystemClock_Config(void) {
 	RCC_ClkInitTypeDef RCC_ClkInitStruct;
@@ -200,14 +261,14 @@ void assert_failed(uint8_t* file, uint32_t line)
 	{
 	}
 }
+
 #endif
+void Led_Lightning(GPIO_TypeDef * gpio_letter, uint16_t pin_number)
+{
+	HAL_GPIO_WritePin(gpio_letter, pin_number, GPIO_PIN_SET);
+	HAL_Delay(20);
+	HAL_GPIO_WritePin(gpio_letter, pin_number, GPIO_PIN_RESET);
+	HAL_Delay(20);
 
-/**
- * @}
- */
+}
 
-/**
- * @}
- */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
